@@ -1,0 +1,131 @@
+
+.grid{
+    margin: 0 auto;
+}
+.eye{
+    font: medium;
+}
+.nodeWall{ 
+    margin: auto;
+    margin-bottom: 1px;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-color: black;
+}
+.nodevisited{
+    margin: auto;
+    margin-bottom: 1px;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-color: rgb(106, 133, 254);
+}
+.nodeonPath{
+    margin: auto;
+    margin-bottom: 1px;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-color: rgb(255,254,106);
+}
+.icons{
+    display: block;
+    margin: 2px auto;
+    font-size: x-large; 
+    color: red;
+}
+.taskbar{
+    margin: auto;
+    border: yellow;
+    border-width: 10px;
+}
+.visualizebutton{
+    padding: 0 0 0 ;
+    margin: 0px auto;
+    color: red;
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    text-align: center;
+    border:none;
+    background: none;
+
+}
+
+.visualizebutton:hover {
+    color: blue;
+}
+.visualizebutton:active {
+    transform: translate(-4px);
+}
+.Page{
+    /*background-image: url("https://i.redd.it/tg9znlen6tm51.jpg");
+    background-position: center;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+    */
+    background-color: whitesmoke;
+}
+
+.legendbar{
+    margin-bottom: 50px;
+    height: 50px;
+}
+.legendbar a {
+    height: 71px;
+    width: 108px;
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: violet;
+    text-decoration: none;
+    font-size: 17px;
+  }
+.navbar {
+    height: 67px;
+    margin-bottom: 30px;
+    width: 100%;
+    background-color:black;
+    overflow: auto;
+  }
+  
+  /* Navbar links */
+  .navbar a {
+    height: 50px;
+    width: 100px;  
+    float: left;
+    text-align: center;
+    padding: 25px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;    
+  }
+  
+  /* Navbar links on mouse-over */
+  .navbar a:hover {
+    background-color: grey;
+  }
+  
+  /* Current/active navbar link */
+  .navbar a:active {
+    background-color: #4CAF50;
+  }
+
+  .highlighter{ 
+    margin-top: 21px;
+    margin-left: 25px;
+    background-color: yellow;
+    height: 2px;
+    width: 50px;
+}
+  
+  /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
+  
+  
