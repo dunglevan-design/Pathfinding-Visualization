@@ -68,9 +68,11 @@ export default class PathfindingVisualizer extends Component {
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     var visitedNodesInOrder = []
     var NodesInShortestPathOrder = []
+    var buttonText = document.getElementById("visualizebutton");
     if(this.state.Algorithm === "Dijkstra's") {
       visitedNodesInOrder = Dijkstra(startNode, finishNode, grid)
       NodesInShortestPathOrder = getNodesInShortestPathOrderDijkstra(finishNode);
+      
     }
     else if(this.state.Algorithm === "BFS"){
       visitedNodesInOrder = BFS(startNode, finishNode, grid);
@@ -79,6 +81,9 @@ export default class PathfindingVisualizer extends Component {
     else if(this.state.Algorithm === "DFS"){
       visitedNodesInOrder = DFS(startNode, finishNode, grid);
       NodesInShortestPathOrder = getNodesInShortestPathOrderDFS(finishNode);
+    }
+    else {
+      buttonText.textContent = 'Pick an Algorithm!';
     }
     this.animateAlgorithm(visitedNodesInOrder, NodesInShortestPathOrder);
   }
@@ -114,9 +119,20 @@ export default class PathfindingVisualizer extends Component {
     }
   }
   ChangeAlgorithm(algorithm){
+    var buttonText = document.getElementById('visualizebutton')
+    if(algorithm === "Dijkstra's"){
+      buttonText.textContent = 'Visualize Dijkstra'
+    }
+    else if(algorithm === "BFS"){
+      buttonText.textContent = 'Visualize BFS'
+    }
+    else if(algorithm === "DFS"){
+      buttonText.textContent = 'Visualize DFS'
+    }
     this.setState({
       Algorithm : algorithm,
     })
+
   }
 
   render() {
@@ -150,18 +166,19 @@ export default class PathfindingVisualizer extends Component {
       <div className = "Page">
         <div className = "taskbar">          
            <div class="navbar">
-              <a onClick = {() => this.ClearGrid()}>
+              <a href = "#" onClick = {() => this.ClearGrid()}>
                  Clear Grid 
               </a>
-              <a onClick = {() => this.addWall()} > Add Wall</a> 
+              <a href = "#" onClick = {() => this.addWall()} > Add Wall</a> 
               <div className = "dropdown">
-                <button className = "dropdown-button">Algorithms<FaCaretDown></FaCaretDown></button>
+                <button className = "dropbtn">Algorithms<FaCaretDown></FaCaretDown></button>
                 <div className  = "dropdown-content">
                    <a value = "Dijkstra's" onClick = {() => this.ChangeAlgorithm("Dijkstra's")}>Dijkstra's</a>
                    <a value = "BFS" onClick = {() => this.ChangeAlgorithm("BFS")}>BFS(Breadth-First Search)</a>      
                    <a value = "DFS" onClick = {() => this.ChangeAlgorithm("DFS")}>DFS(Depth-First Search)</a>      
                 </div>
-              </div>          
+              </div> 
+              <button className = "visualizebutton" id = "visualizebutton" onClick = {() => this.visualizeAlgorithm()}>Visualize</button>         
            </div>
            <div class="legendbar">
               <a href ="#"><FaAngleRight className = "icons"></FaAngleRight>Start Node</a>
@@ -170,7 +187,7 @@ export default class PathfindingVisualizer extends Component {
               <a><div className = "nodevisited"></div>Visited Node</a>
               <a><div className = "nodeonPath"></div>Shortest Path</a>
            </div>
-           <button className = "visualizebutton" onClick = {() => this.visualizeAlgorithm()}>Visualize!</button>
+           <div className = "notes" id = "notes">Pick an algorithm and visualize!</div>
         </div>       
         <div className="grid">{gridtorender}</div>
     </div>);
