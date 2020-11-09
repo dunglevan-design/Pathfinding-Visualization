@@ -19,7 +19,6 @@ export default class PathfindingVisualizer extends Component {
     this.state = {
       grid: [],
       mouseisPressed: false,
-      addWallisClicked: false,
       Algorithm : "",
       Algo : 0,
     };
@@ -106,18 +105,7 @@ export default class PathfindingVisualizer extends Component {
 
   }
 
-  addWall(){
-    if(this.state.addWallisClicked){
-      this.setState({
-        addWallisClicked: false,
-      })
-    }
-    else {
-      this.setState({
-        addWallisClicked : true,
-      })
-    }
-  }
+
   ChangeAlgorithm(algorithm){
     var buttonText = document.getElementById('visualizebutton')
     if(algorithm === "Dijkstra's"){
@@ -169,7 +157,6 @@ export default class PathfindingVisualizer extends Component {
               <a href = "#" onClick = {() => this.ClearGrid()}>
                  Clear Grid 
               </a>
-              <a href = "#" onClick = {() => this.addWall()} > Add Wall</a> 
               <div className = "dropdown">
                 <button className = "dropbtn">Algorithms<FaCaretDown></FaCaretDown></button>
                 <div className  = "dropdown-content">
@@ -222,7 +209,6 @@ export default class PathfindingVisualizer extends Component {
 
 
   handleMouseDown(row,col){
-    if(!this.state.addWallisClicked) return;
     const Node = document.getElementById(`node-${row}-${col}`).className
     if(Node !== 'node node-start' && Node !== 'node node-finish'){
         document.getElementById(`node-${row}-${col}`).className = "node node-wall"
